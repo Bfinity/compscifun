@@ -8,18 +8,6 @@ removeString (text, 4, 6);
 has the effect of removing the characters “wrong “ (the word “wrong” plus the space that follows) from the array text.The resulting string inside text is then "the son".
 */
 
-// char removeString(char sourceString[], int index, int numToRemove){
-//   int i;
-//   char endString[index + numToRemove];
-//   for(i = 0; sourceString[i] != '\0'; i++){
-//       if(i == index){
-//         i = numToRemove;
-//       }
-//       endString[i] = sourceString[i];
-//   }
-//   return endString;
-// }
-
 void removeString(char sourceString[], int index, int numToRemove){
   int i;
   int count = index + numToRemove;

@@ -1,0 +1,65 @@
+Data Structures
+Organizing data in rational and efficient way.
+ex: linked list, a way to think about a list as one unit. can get data based on it's relation
+
+Build it to assist programmers in thinking about data but primary purpose if for storage and access (in the computer)
+
+ex: array, data kept in a straight line and makes it easy to get items based on their location
+
+Algorithm
+List of instructions for how to process data/ series of steps to take to complete operation
+
+Euclid's Alogrithm - greatest common divisor between two numbers
+
+Chapter 7 - 9 - Read up to Working With Structures
+
+Arrays: organize data
+Structs: organize disprate type data
+Functions: organize Algorithms
+
+array in C; homoginze type Data
+int numbers[5] // array that holds 5 ints
+int numbers[5] = {1, 2, 3, 4, 5} // array with ints 1 - 5
+numbers in brackets is called subscript
+
+array starts at 0 because it is 0 spaces from the beginning of the Array
+
+arrays can hold char, float, or whatever... holds the appropriate size of memory to hold the items
+
+arrays that hold arrays must be the same size
+
+struct: unordered composite of Data
+
+struct nums {
+int: 1;
+char: "char",
+};
+
+nums.int = 4 // assigning value with dot notation
+
+struct nums n = {2, "words"}
+struct nums b;
+b = (struct nums) {3, "more words"} // compound literal
+
+you can create an array of Structs and arrays can be members of structs
+structs can have struct members
+
+functions can be written in c (like functions in other languages)
+arguments passed into functions are copies, originals passed in are unaffected
+functions that don't declare a return type default to an int return type
+
+when you pass arrays into a function it gets a pointer to the memory location of the array so, the function doesn't know how large it is but it can update the value of the actual array. You need to pass the array size into the function also
+
+functions can call other functions and also call themselves
+
+each call to a function takes up a stackframe and there are limited numbers of stackframes. so recursively calling a function stacks up.
+
+Danger Zone - Anti Patterns
+* Global Variables - no safety built into the applications. you can make a declaration with a name of printf and the compiler gets confused. so defining global variables means something unexpected can happen
+* Static Variables - static variables are not available outside of their scope. state is maintained.
+
+Homework
+write a program to calculate float
+least common multiple of two numbers
+sorting an array
+calculate the number of days between two dates

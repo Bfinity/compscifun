@@ -19,7 +19,7 @@ int sizeArray(char array[]){
 void wtf(char first[], char add[], int start){
   int size = sizeArray(first);
   for(int i = 0; add[i] != '\0'; i++){
-    for(int j = size; j > start + i; j--){
+    for(int j = size; j > start; j--){
       first[j] = first[j - 1];
     }
     first[start + i] = add[i];
@@ -27,7 +27,7 @@ void wtf(char first[], char add[], int start){
 }
 
 int main(void){
-  char startString[] = "the wrong son                        ";
+  char startString[30] = "the wrong son";
   char newString[] = "per";
   wtf(startString, newString, 10);
   printf("%s\n", startString);

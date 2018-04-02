@@ -47,6 +47,14 @@ void insertEntry(struct doublyLinkedListEntry *list, struct doublyLinkedListEntr
   printf("Inserted entry by struct pointer\n");
 }
 
+void insertEntryRefactor(struct doublyLinkedListEntry *entryBefore,  struct doublyLinkedListEntry entryToAdd){
+      entryToAdd.nextEntry = entryBefore->nextEntry;
+      entryToAdd.previousEntry = entryBefore;
+      entryBefore->nextEntry->previousEntry = &entryToAdd;
+      entryBefore->nextEntry = &entryToAdd;
+  printf("Inserted entry by struct pointer\n");
+}
+
 void removeEntryByValue(struct doublyLinkedListEntry *list, int valueOfEntryToRemove){
 //  struct doublyLinkedListEntry *nullStruct = (struct doublyLinkedListEntry *) 0;
   while(list != nullStruct){
@@ -65,6 +73,29 @@ void removeEntry(struct doublyLinkedListEntry *list, struct doublyLinkedListEntr
 //  struct doublyLinkedListEntry *nullStruct = (struct doublyLinkedListEntry *) 0;
   while(list != nullStruct){
     if(isEqual(list, entryToRemove)){
+      list->previousEntry->nextEntry = list->nextEntry;
+      list->nextEntry->previousEntry = list->previousEntry;
+      list->previousEntry = nullStruct;
+      list->nextEntry = nullStruct;
+    }
+    list = list->nextEntry;
+  }
+  printf("Removed entry by struct pointer\n");
+}
+
+void removeEntryRefactor1(struct doublyLinkedListEntry *list, struct doublyLinkedListEntry entryToRemove){
+//  struct doublyLinkedListEntry *nullStruct = (struct doublyLinkedListEntry *) 0;
+      list->previousEntry->nextEntry = list->nextEntry;
+      list->nextEntry->previousEntry = list->previousEntry;
+      list->previousEntry = nullStruct;
+      list->nextEntry = nullStruct;
+  printf("Removed entry by struct pointer\n");
+}
+
+void removeEntryRefactor2(struct doublyLinkedListEntry *list, struct doublyLinkedListEntry *entryToRemove){
+//  struct doublyLinkedListEntry *nullStruct = (struct doublyLinkedListEntry *) 0;
+  while(list){
+    if(list == entryToRemove){
       list->previousEntry->nextEntry = list->nextEntry;
       list->nextEntry->previousEntry = list->previousEntry;
       list->previousEntry = nullStruct;
@@ -111,7 +142,7 @@ int main(void){
   printf("List after inserting\n");
   printList(list, &first);
 
-  removeEntryByValue(list, 2);
+  removeEntryRefactor2(list, &second);
 
   printf("List after removing\n");
   printList(list, &first);
